@@ -245,6 +245,10 @@ const { actions, reducer } = createSlice({
       state.takeoffAreaSetupDialog.open = true;
     }),
 
+     resetOutdoorShowOrigin: noPayload((state) => {
+      state.environment.outdoor.coordinateSystem.origin = null;
+    }),
+
     revokeTakeoffAreaApproval: noPayload((state) => {
       state.preflight.takeoffAreaApprovedAt = null;
     }),
