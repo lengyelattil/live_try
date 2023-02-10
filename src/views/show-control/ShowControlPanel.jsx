@@ -8,6 +8,7 @@ import EnvironmentEditorDialog from './EnvironmentEditorDialog';
 import LoadShowFromCloudDialog from './LoadShowFromCloudDialog';
 import ManualPreflightChecksDialog from './ManualPreflightChecksDialog';
 import OnboardPreflightChecksDialog from './OnboardPreflightChecksDialog';
+import ResetButton from './ResetButton';
 import ShowControlPanelUpperSegment from './ShowControlPanelUpperSegment';
 import StartTimeDialog from './StartTimeDialog';
 import TakeoffAreaSetupDialog from './TakeoffAreaSetupDialog';
@@ -15,7 +16,7 @@ import { hasFeature } from '~/utils/configuration';
 
 /**
  * Panel that shows the widgets that are needed to load and configure a drone
- * show.
+ * show. <ResetButton />
  */
 const ShowControlPanel = () => (
   <Box
@@ -29,6 +30,7 @@ const ShowControlPanel = () => (
     <Box className='bottom-bar'>
       <List dense disablePadding>
         <AuthorizationButton />
+        <ResetButton /> 
       </List>
     </Box>
 
