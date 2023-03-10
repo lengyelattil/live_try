@@ -25,7 +25,7 @@ import MultiPagePanel, { Page } from '~/components/MultiPagePanel';
  * Panel that shows the widgets that are needed to load and configure a drone
  * show.
  */
-//I want to try the push to github
+// I want to try the push to github
 const ShowControlPanelUpperSegment = ({ environmentType, isAuthorized }) => (
   <MultiPagePanel flex={1} selectedPage={isAuthorized ? 'execution' : 'setup'}>
     <Page scrollable id='setup'>

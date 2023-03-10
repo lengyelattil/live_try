@@ -30,7 +30,7 @@ const ShowControlPanel = () => (
     <Box className='bottom-bar'>
       <List dense disablePadding>
         <AuthorizationButton />
-        <ResetButton /> 
+        <ResetButton />
       </List>
     </Box>
 
