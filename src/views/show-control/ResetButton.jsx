@@ -9,6 +9,8 @@ import Typography from '@material-ui/core/Typography';
 import { getSetupStageStatuses } from '~/features/show/stages';
 import Colors from '~/components/colors';
 
+import { resetEnvironmentSettings } from '~/features/show/actions';
+
 /**
  * Button that allows the user to express her explicit consent to starting the
  * drone show. Such an authorization is needed even if the show is set to start
@@ -32,7 +34,7 @@ const ResetButton = ({ onClick }) => {
 
 ResetButton.propTypes = {
   onClick: PropTypes.func,
-}
+};
 
 export default connect(
   // mapStateToProps
@@ -43,7 +45,7 @@ export default connect(
       console.log('sajt' + Math.random());
 
       // const state = getState();
-
+      dispatch(resetEnvironmentSettings());
       // dispatch(resetOutdoorShowOrigin(newOrigin));
       // dispatch(setOutdoorShowOrientation(action));
       // dispatch(rotateOutdoorShowOrientationByAngle(angle));

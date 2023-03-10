@@ -400,6 +400,14 @@ export function reloadCurrentShowFile() {
   };
 }
 
+// These are written by Attila Lengyel
+export const resetEnvironmentSettings =
+  (angle, action, newOrigin) => (dispatch) => {
+    dispatch(setOutdoorShowOrigin(newOrigin));
+    dispatch(setOutdoorShowOrientation(action));
+    dispatch(rotateOutdoorShowOrientationByAngle(angle));
+  };
+
 /**
  * Thunk that signs off on the manual preflight checks with the current
  * timestamp.
