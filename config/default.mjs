@@ -15,6 +15,7 @@ const config = {
   server: {
     connectAutomatically: true,
     hostName: 'localhost',
+    port: 5000,
     // port and protocol will be inferred during onboarding
   },
   session: {},

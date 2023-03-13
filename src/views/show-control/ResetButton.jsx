@@ -9,7 +9,9 @@ import Typography from '@material-ui/core/Typography';
 import { getSetupStageStatuses } from '~/features/show/stages';
 import Colors from '~/components/colors';
 
+import { clearGeofencePolygonId } from '~/features/mission/slice';
 import { resetEnvironmentSettings } from '~/features/show/actions';
+import { revokeTakeoffAreaApproval } from '~/features/show/slice';
 
 /**
  * Button that allows the user to express her explicit consent to starting the
@@ -45,7 +47,9 @@ export default connect(
       console.log('sajt' + Math.random());
 
       // const state = getState();
+      dispatch(clearGeofencePolygonId());
       dispatch(resetEnvironmentSettings());
+      dispatch(revokeTakeoffAreaApproval());
       // dispatch(resetOutdoorShowOrigin(newOrigin));
       // dispatch(setOutdoorShowOrientation(action));
       // dispatch(rotateOutdoorShowOrientationByAngle(angle));
