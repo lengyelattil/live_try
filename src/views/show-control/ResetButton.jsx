@@ -53,6 +53,7 @@ export default connect(
       // dispatch(resetOutdoorShowOrigin(newOrigin));
       // dispatch(setOutdoorShowOrientation(action));
       // dispatch(rotateOutdoorShowOrientationByAngle(angle));
+      //another laptop
     },
   }
 )(ResetButton);
