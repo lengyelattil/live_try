@@ -5,13 +5,16 @@ import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 // import ListItem from '@material-ui/core/ListItem';
 // import ListItemText from '@material-ui/core/ListItemText';
-import Typography from '@material-ui/core/Typography';
 import { getSetupStageStatuses } from '~/features/show/stages';
 import Colors from '~/components/colors';
 
 import { clearGeofencePolygonId } from '~/features/mission/slice';
 import { resetEnvironmentSettings } from '~/features/show/actions';
-import { revokeTakeoffAreaApproval } from '~/features/show/slice';
+import {
+  revokeTakeoffAreaApproval,
+  clearOnboardPreflightChecks,
+} from '~/features/show/slice';
+// import { clearOnboardPreflightChecks } from '~/features/show/slice';
 
 /**
  * Button that allows the user to express her explicit consent to starting the
@@ -50,10 +53,11 @@ export default connect(
       dispatch(clearGeofencePolygonId());
       dispatch(resetEnvironmentSettings());
       dispatch(revokeTakeoffAreaApproval());
+      dispatch(clearOnboardPreflightChecks());
       // dispatch(resetOutdoorShowOrigin(newOrigin));
       // dispatch(setOutdoorShowOrientation(action));
       // dispatch(rotateOutdoorShowOrientationByAngle(angle));
-      //another laptop
+      // another laptop
     },
   }
 )(ResetButton);
