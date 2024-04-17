@@ -6,6 +6,7 @@ import mapValues from 'lodash-es/mapValues';
 import { TextField } from 'mui-rff';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import { Form } from 'react-final-form';
 import { connect } from 'react-redux';
 
@@ -39,47 +40,42 @@ const validator = createValidator({
 const fields = [
   {
     id: 'criticalBatteryVoltage',
-    label: 'Critical battery voltage',
+    label: 'safetySettingsTab.criticalBatteryVoltage',
     unit: 'V',
-    description:
-      'Critically low battery voltage in [V] under which a critical battery failsafe action is triggered.',
+    description: 'safetySettingsTab.criticalBatteryVoltageDescript',
   },
   {
     id: 'lowBatteryVoltage',
-    label: 'Low battery voltage',
+    label: 'safetySettingsTab.lowBatteryVoltage',
     unit: 'V',
-    description:
-      'Low battery voltage in [V] under which a low battery failsafe action is triggered.',
+    description: 'safetySettingsTab.lowBatteryVoltageDescript',
   },
   {
     id: 'returnToHomeAltitude',
-    label: 'Return to home altitude',
+    label: 'safetySettingsTab.returnToHomeAltitude',
     unit: 'm',
-    description:
-      'Altitude in [mAHL] at which return to home operations are performed.',
+    description: 'safetySettingsTab.returnToHomeAltitudeDescript',
   },
   {
     id: 'returnToHomeSpeed',
-    label: 'Return to home speed',
+    label: 'safetySettingsTab.returnToHomeSpeed',
     unit: 'm/s',
-    description:
-      'Horizontal speed in [m/s] at which return to home operations are performed.',
+    description: 'safetySettingsTab.returnToHomeSpeedDescript',
   },
 ];
 
-const SafetySettingsFormPresentation = ({ initialValues, onSubmit }) => (
+const SafetySettingsFormPresentation = ({ initialValues, onSubmit, t }) => (
   <Form initialValues={initialValues} validate={validator} onSubmit={onSubmit}>
     {({ handleSubmit }) => (
       <form id='safetySettings' onSubmit={handleSubmit}>
         <DialogContentText id='alert-dialog-description'>
-          Empty values result in the respective safety values not being
-          overridden.
+          {t('safetySettingsTab.emptyValues')}
         </DialogContentText>
         {fields.map(({ id, label, unit, description }) => (
           <Box key={id} mt={1}>
             <TextField
               name={id}
-              label={label}
+              label={t(label)}
               // Not `number`, because that would make distinguishing whether
               // a field is empty or contains invalid input impossible
               type='text'
@@ -93,7 +89,7 @@ const SafetySettingsFormPresentation = ({ initialValues, onSubmit }) => (
               }}
               variant='filled'
             />
-            <FormHelperText>{description}</FormHelperText>
+            <FormHelperText>{t(description)}</FormHelperText>
           </Box>
         ))}
       </form>
@@ -104,6 +100,7 @@ const SafetySettingsFormPresentation = ({ initialValues, onSubmit }) => (
 SafetySettingsFormPresentation.propTypes = {
   initialValues: PropTypes.object,
   onSubmit: PropTypes.func,
+  t: PropTypes.func,
 };
 
 const SafetySettingsForm = connect(
@@ -113,22 +110,22 @@ const SafetySettingsForm = connect(
       ...mapValues(getSafetySettings(state), (v) => (v ? String(v) : '')),
     },
   })
-)(SafetySettingsFormPresentation);
+)(withTranslation()(SafetySettingsFormPresentation));
 
 /**
  * Container of the tab that shows the form that the user can use to
  * edit the safety settings.
  */
-const SafetySettingsTab = ({ onClose, onSubmit }) => (
+const SafetySettingsTab = ({ onClose, onSubmit, t }) => (
   <>
     <DialogContent>
       <SafetySettingsForm onSubmit={onSubmit} />
     </DialogContent>
     <DialogActions>
       <Button form='safetySettings' type='submit' color='primary'>
-        Save
+        {t('general.action.save')}
       </Button>
-      <Button onClick={onClose}>Close</Button>
+      <Button onClick={onClose}>{t('general.action.close')}</Button>
     </DialogActions>
   </>
 );
@@ -136,6 +133,7 @@ const SafetySettingsTab = ({ onClose, onSubmit }) => (
 SafetySettingsTab.propTypes = {
   onClose: PropTypes.func,
   onSubmit: PropTypes.func,
+  t: PropTypes.func,
 };
 
 export default connect(
@@ -157,4 +155,4 @@ export default connect(
       );
     },
   }
-)(SafetySettingsTab);
+)(withTranslation()(SafetySettingsTab));
