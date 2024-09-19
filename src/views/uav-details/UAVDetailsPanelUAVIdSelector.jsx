@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
+import { withTranslation } from 'react-i18next';
 
 import Box from '@material-ui/core/Box';
 import SelectAll from '@material-ui/icons/SelectAll';
@@ -28,6 +29,7 @@ const UAVDetailsPanelUAVIdSelector = ({
   followMapSelection,
   selectedUAVId,
   setSelectedUAVId,
+  t,
   toggleFollowMapSelection,
 }) => (
   <Box display='flex' alignItems='center' mx={0.5}>
@@ -43,7 +45,7 @@ const UAVDetailsPanelUAVIdSelector = ({
         </div>
       )}
     </UAVSelectorWrapper>
-    <Tooltip content='Follow the selection on the map'>
+    <Tooltip content={t('UAVDetailsPanelUAVIdSelector.tooltip')}>
       <ToggleButton
         size='small'
         value='followMapSelection'
@@ -60,6 +62,7 @@ UAVDetailsPanelUAVIdSelector.propTypes = {
   followMapSelection: PropTypes.bool,
   selectedUAVId: PropTypes.string,
   setSelectedUAVId: PropTypes.func,
+  t: PropTypes.func,
   toggleFollowMapSelection: PropTypes.func,
   uavIds: PropTypes.arrayOf(PropTypes.string),
 };
@@ -76,4 +79,4 @@ export default connect(
     setSelectedUAVId: setSelectedUAVIdInUAVDetailsPanel,
     toggleFollowMapSelection: toggleFollowMapSelectionInUAVDetailsPanel,
   }
-)(UAVDetailsPanelUAVIdSelector);
+)(withTranslation()(UAVDetailsPanelUAVIdSelector));

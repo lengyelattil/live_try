@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
+import { withTranslation } from 'react-i18next';
 
 import BackgroundHint from '@skybrush/mui-components/lib/BackgroundHint';
 
@@ -15,21 +16,22 @@ import {
 import UAVTestsPanel from '~/features/uavs/UAVTestsPanel';
 
 export const views = {
-  preflight: PreflightStatusPanel,
-  tests: UAVTestsPanel,
-  messages: MessagesPanel,
-  logs: UAVLogsPanel,
-  rangefinder: RangefinderPanel,
+  'UAVDetailsPanelBody.preflight': PreflightStatusPanel,
+  'UAVDetailsPanelBody.tests': UAVTestsPanel,
+  'UAVDetailsPanelBody.messages': MessagesPanel,
+  'UAVDetailsPanelBody.logs': UAVLogsPanel,
+  'UAVDetailsPanelBody.rangefinder': RangefinderPanel,
 };
 
 // prettier-ignore
-const UAVDetailsPanelBody = ({ selectedTab, uavId }) =>
-  !uavId                  ? <BackgroundHint text='Please select a UAV id!' />  :
-  !(selectedTab in views) ? <BackgroundHint text='Please select a view!'   />  :
+const UAVDetailsPanelBody = ({ selectedTab, t, uavId }) =>
+  !uavId                  ? <BackgroundHint text={t('UAVDetailsPanelBody.selectUAVId')} />  :
+  !(selectedTab in views) ? <BackgroundHint text={t('UAVDetailsPanelBody.selectView')}   />  :
   ((SelectedView)        => <SelectedView uavId={uavId} />)(views[selectedTab]);
 
 UAVDetailsPanelBody.propTypes = {
   selectedTab: PropTypes.oneOf(Object.keys(views)),
+  t: PropTypes.func,
   uavId: PropTypes.string,
 };
 
@@ -39,4 +41,4 @@ export default connect(
     selectedTab: getSelectedTabInUAVDetailsPanel(state),
     uavId: getSelectedUAVIdInUAVDetailsPanel(state),
   })
-)(UAVDetailsPanelBody);
+)(withTranslation()(UAVDetailsPanelBody));

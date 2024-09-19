@@ -36,6 +36,18 @@
     "surveyNo": "Nincs felmérés folyamatban",
     "surveySuccesful": "A felmérés sikeres"
   },
+  "UAVDetailsPanelBody": {
+    "logs": "logok",
+    "messages": "üzenetek",
+    "preflight": "ellenőrzőlista",
+    "rangefinder": "távolságmérő",
+    "selectUAVId": "Kérem válasszon egy drón id-t!",
+    "selectView": "Kérem válasszon egy nézetet!",
+    "tests": "tesztek"
+  },
+  "UAVDetailsPanelUAVIdSelector": {
+    "tooltip": "Kövesse a kijelöltet a térképen"
+  },
   "UAVList": {
     "allUAVs": "Összes drón",
     "assignedUAVs": "Hozzárendelt drónok",
@@ -602,7 +614,8 @@
     "startTimeIsSetTo": "A kezdés beállítva erre az időpontra: <strong>{{formattedStartTime}}</strong>"
   },
   "startUploadButton": {
-    "startSelected": "Indítás a kiválasztottakra"
+    "startSelected": "Indítás a kiválasztottakra",
+    "tooltip": ""
   },
   "surveyStatusIndicator": {
     "noSurveyInformation": "Nincsenek felmérési adatok"
@@ -633,6 +646,7 @@
   "toolbox": {
     "averagingInProgress": "{{number}} folyamatban",
     "coordinateAveraging": "Koordináta átlagolás",
+    "firmwareUpdate": "",
     "licenseInfo": "Licenc információ",
     "offlineMaps": "Offline térképek",
     "paramUpload": "Paraméter feltöltése",

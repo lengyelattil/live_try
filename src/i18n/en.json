@@ -36,6 +36,18 @@
     "surveyNo": "No survey in progress",
     "surveySuccesful": "Survey successful"
   },
+  "UAVDetailsPanelBody": {
+    "logs": "logs",
+    "messages": "messages",
+    "preflight": "preflight",
+    "rangefinder": "rangefinder",
+    "selectUAVId": "Please select a UAV id!",
+    "selectView": "Please select a view!",
+    "tests": "tests"
+  },
+  "UAVDetailsPanelUAVIdSelector": {
+    "tooltip": "Follow the selection on the map"
+  },
   "UAVList": {
     "allUAVs": "All UAVs",
     "assignedUAVs": "Assigned UAVs",
