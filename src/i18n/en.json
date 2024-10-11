@@ -111,6 +111,30 @@
     "indoor": "This show is an indoor show. You may specify the corners of the room in which the show is taking place (for visualisation purposes).",
     "outdoor": "This show is an outdoor show. You need to specify at least the origin and orientation of the coordinate system so Skybrush can map the show into GPS coordinates."
   },
+  "featureAttributesForm": {
+    "currentGeofence": "This feature is the current geofence",
+    "currentGeofenceText": "It cannot be used as an exclusion zone at the same time",
+    "doesNotSupportAttributes": "This feature type doesn't support attributes.",
+    "exclusionZone": "Exclusion zone",
+    "exclusionZoneText": "Treat this polygon as an obstacle marker that should be excluded from the mission zone during planning and avoided while flying.",
+    "maxAGLAlttitude": "Max AGL altitude",
+    "maxAGLAlttitudeText": "Distance of the bottom of the obstacle measured from the ground. UAVs should fly below this altitude limit to avoid collision.",
+    "minAGLAlttitude": "Min AGL altitude",
+    "minAGLAlttitudeText": "Distance of the top of the obstacle measured from the ground. UAVs should fly above this altitude limit to avoid collision."
+  },
+  "featureEditorDialog": {
+    "featureDoesNotExist": "Feature does not exist"
+  },
+  "featureEditorDialogTab": {
+    "attributes": "Attributes",
+    "general": "General",
+    "points": "Points"
+  },
+  "featureList": {
+    "featureProperties": "Feature properties",
+    "focusFeature": "Focus feature",
+    "toggleVisibility": "Toggle visibility"
+  },
   "fieldNotesPanel": {
     "exportNotesAsFile": "Export notes as Markdown file"
   },
@@ -183,6 +207,13 @@
       "successful": "successful",
       "waiting": "waiting"
     }
+  },
+  "generalPropertiesForm": {
+    "automaticColor": "Automatic color",
+    "fillInterior": "Fill interior",
+    "label": "Label",
+    "showIndividualPoints": "Show individual points",
+    "showMeasurements": "Show measurements"
   },
   "geofence": {
     "statusText": {
@@ -341,6 +372,7 @@
   },
   "parameterListSidebar": {
     "import": "Import…",
+    "manifest": "Manifest",
     "nextStep": "Next step",
     "removeAllItems": "Remove all items from manifest"
   },

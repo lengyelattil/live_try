@@ -111,6 +111,30 @@
     "indoor": "Ez egy beltéri műsor. Megadhatja a terem sarkait, ahol a műsor zajlik (vizualizásiós célból).",
     "outdoor": "Ez egy kültéri műsor. Adja meg legalább a koordináta rendszer origóját és irányát, hogy a Skybrush le tudja képezni a műsort GPS koordinátákba."
   },
+  "featureAttributesForm": {
+    "currentGeofence": "Ez az objektum a jelenlegi geokerítés",
+    "currentGeofenceText": "Nem használható egyidejűleg kizárási zónaként",
+    "doesNotSupportAttributes": "Ez az objektumtípus nem támogatja az attribútumokat.",
+    "exclusionZone": "Kizárási zóna",
+    "exclusionZoneText": "Kezelje ezt a sokszöget akadályjelzőként, amelyet a tervezés során ki kell zárni a küldetési zónából, és el kell kerülni repülés közben.",
+    "maxAGLAlttitude": "Max AGL magasság",
+    "maxAGLAlttitudeText": "Az akadály aljának távolsága a talajtól mérve. Az ütközések elkerülése érdekében a drónoknak e magassági határ alatt kell repülniük.",
+    "minAGLAlttitude": "Min AGL magasság",
+    "minAGLAlttitudeText": "Az akadály tetejének távolsága a talajtól mérve. Az ütközések elkerülése érdekében a drónoknak e magassági határ felett kell repülniük."
+  },
+  "featureEditorDialog": {
+    "featureDoesNotExist": "Az objektum nem létezik"
+  },
+  "featureEditorDialogTab": {
+    "attributes": "Attribútumok",
+    "general": "Általános",
+    "points": "Pontok"
+  },
+  "featureList": {
+    "featureProperties": "Objektum tulajdonságok",
+    "focusFeature": "Fókuszálás az objektumra",
+    "toggleVisibility": "Váltás a láthatóság között"
+  },
   "fieldNotesPanel": {
     "exportNotesAsFile": "Jegyzetek exportálása Markdown fájlként"
   },
@@ -183,6 +207,13 @@
       "successful": "sikeres",
       "waiting": "várakozik"
     }
+  },
+  "generalPropertiesForm": {
+    "automaticColor": "Automatikus szín",
+    "fillInterior": "Kitöltés belül",
+    "label": "Címke",
+    "showIndividualPoints": "Egyedi pontok megjelenítése",
+    "showMeasurements": "Mérések megjelenítése"
   },
   "geofence": {
     "statusText": {
@@ -340,6 +371,7 @@
   },
   "parameterListSidebar": {
     "import": "Importálás…",
+    "manifest": "Jegyzék",
     "nextStep": "Tovább",
     "removeAllItems": "Minden elem eltávolítása a jegyzékből"
   },
@@ -559,7 +591,7 @@
     "uploadShowDataStart": "Kattintson ide a feltötés megkezdéséhez"
   },
   "sidebar": {
-    "missionType": "Küldetés típus: {{missionType}}"
+    "missionType": "Küldetés típus: ({{missionType}})"
   },
   "sorting": {
     "ascending": "Növekvő",
@@ -615,7 +647,7 @@
   },
   "startUploadButton": {
     "startSelected": "Indítás a kiválasztottakra",
-    "tooltip": ""
+    "tooltip": "Részleges feltöltéshez kattintson a kiválaszott drónok azonosítójára!"
   },
   "surveyStatusIndicator": {
     "noSurveyInformation": "Nincsenek felmérési adatok"

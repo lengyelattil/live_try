@@ -17,9 +17,9 @@ export const labelForFeatureEditorDialogTab: Record<
   FeatureEditorDialogTab,
   string
 > = {
-  [FeatureEditorDialogTab.GENERAL]: 'General',
-  [FeatureEditorDialogTab.ATTRIBUTES]: 'Attributes',
-  [FeatureEditorDialogTab.POINTS]: 'Points',
+  [FeatureEditorDialogTab.GENERAL]: 'featureEditorDialogTab.general',
+  [FeatureEditorDialogTab.ATTRIBUTES]: 'featureEditorDialogTab.attributes',
+  [FeatureEditorDialogTab.POINTS]: 'featureEditorDialogTab.points',
 };
 
 export type FeatureProperties = {

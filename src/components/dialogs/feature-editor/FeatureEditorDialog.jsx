@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import Button from '@material-ui/core/Button';
@@ -41,6 +42,7 @@ const FeatureEditorDialogPresentation = (props) => {
     onTabSelected,
     open,
     selectedTab,
+    t,
   } = props;
 
   const SelectedTab = {
@@ -52,7 +54,7 @@ const FeatureEditorDialogPresentation = (props) => {
   const content = feature ? (
     SelectedTab && <SelectedTab feature={feature} featureId={featureId} />
   ) : (
-    <p>Feature does not exist</p>
+    <p>{t('featureEditorDialog.featureDoesNotExist')}</p>
   );
 
   const actions = [
@@ -62,10 +64,10 @@ const FeatureEditorDialogPresentation = (props) => {
       disabled={!feature}
       onClick={onRemoveFeature}
     >
-      Remove
+      {t('general.action.remove')}
     </Button>,
     <Button key='close' onClick={onClose}>
-      Close
+      {t('general.action.close')}
     </Button>,
   ];
 
@@ -76,7 +78,7 @@ const FeatureEditorDialogPresentation = (props) => {
           <Tab
             key={tab}
             value={tab}
-            label={labelForFeatureEditorDialogTab[tab]}
+            label={t(labelForFeatureEditorDialogTab[tab])}
           />
         ))}
       </DialogTabs>
@@ -101,6 +103,7 @@ FeatureEditorDialogPresentation.propTypes = {
   onTabSelected: PropTypes.func,
   open: PropTypes.bool.isRequired,
   selectedTab: PropTypes.oneOf(Object.values(FeatureEditorDialogTab)),
+  t: PropTypes.func,
 };
 
 FeatureEditorDialogPresentation.defaultProps = {
@@ -141,6 +144,6 @@ const FeatureEditorDialog = connect(
     ...dispatchProps,
     onRemoveFeature: () => dispatchProps.onRemoveFeature(stateProps.featureId),
   })
-)(FeatureEditorDialogPresentation);
+)(withTranslation()(FeatureEditorDialogPresentation));
 
 export default FeatureEditorDialog;

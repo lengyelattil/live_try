@@ -20,6 +20,7 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import { listOf } from '~/components/helpers/lists';
@@ -98,6 +99,7 @@ const FeatureListEntryPresentation = (props) => {
     shouldFill,
     suggestedColor,
     suggestedLabel,
+    t,
   } = props;
   const { label, type, visible } = feature;
 
@@ -108,25 +110,25 @@ const FeatureListEntryPresentation = (props) => {
       action: onFocusFeature,
       icon: <FilterCenterFocus />,
       key: 'focus',
-      label: 'Focus feature',
+      label: t('featureList.focusFeature'),
     },
     {
       action: onToggleFeatureVisibility,
       icon: visible ? <Visibility /> : <VisibilityOff color='disabled' />,
       key: 'visibility',
-      label: 'Toggle visibility',
+      label: t('featureList.toggleVisibility'),
     },
     {
       action: onEditFeature,
       icon: <Edit />,
       key: 'edit',
-      label: 'Feature properties',
+      label: t('featureList.featureProperties'),
     },
     {
       action: onRemoveFeature,
       icon: <Delete />,
       key: 'delete',
-      label: 'Remove',
+      label: t('general.action.remove'),
     },
   ];
 
@@ -203,6 +205,7 @@ FeatureListEntryPresentation.propTypes = {
   shouldFill: PropTypes.bool,
   suggestedColor: PropTypes.string,
   suggestedLabel: PropTypes.string,
+  t: PropTypes.func,
 };
 
 const FeatureListEntry = connect(
@@ -238,7 +241,7 @@ const FeatureListEntry = connect(
       updateFeatureVisibility({ id: feature.id, visible: !feature.visible });
     },
   })
-)(FeatureListEntryPresentation);
+)(withTranslation()(FeatureListEntryPresentation));
 
 /**
  * Presentation component for the entire feature list.

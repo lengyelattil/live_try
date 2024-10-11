@@ -90,7 +90,9 @@ const ParameterListSidebar = ({
   return (
     <Box className={classes.root}>
       <Box className={classes.header}>
-        <Box className={classes.title}>Manifest</Box>
+        <Box className={classes.title}>
+          {t('parameterListSidebar.manifest')}
+        </Box>
         <Tooltip content={t('parameterListSidebar.removeAllItems')}>
           <IconButton
             disabled={!manifest || manifest.length === 0}

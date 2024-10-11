@@ -2,6 +2,7 @@ import { Checkboxes, TextField } from 'mui-rff';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Form, FormSpy } from 'react-final-form';
+import { withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import Button from '@material-ui/core/Button';
@@ -24,6 +25,7 @@ const FeatureAttributesForm = ({
   feature,
   isGeofence,
   onSetFeatureAttributes,
+  t,
 }) => {
   switch (feature.type) {
     case FeatureType.POLYGON: {
@@ -31,9 +33,13 @@ const FeatureAttributesForm = ({
         return (
           <BackgroundHint
             icon={<Fence />}
-            header='This feature is the current geofence'
-            text='It cannot be used as an exclusion zone at the same time'
-            button={<Button onClick={clearGeofencePolygonId}>Clear</Button>}
+            header={t('featureAttributesForm.currentGeofence')}
+            text={t('featureAttributesForm.currentGeofenceText')}
+            button={
+              <Button onClick={clearGeofencePolygonId}>
+                {t('general.action.clear')}
+              </Button>
+            }
           />
         );
       }
@@ -57,16 +63,15 @@ const FeatureAttributesForm = ({
             <div>
               <Checkboxes
                 name='isExclusionZone'
-                data={{ label: 'Exclusion zone' }}
+                data={{ label: t('featureAttributesForm.exclusionZone') }}
               />
               <FormHelperText style={{ marginTop: -8, marginBottom: 8 }}>
-                Treat this polygon as an obstacle marker that should be excluded
-                from the mission zone during planning and avoided while flying.
+                {t('featureAttributesForm.exclusionZoneText')}
               </FormHelperText>
 
               <TextField
                 name='minAltitude'
-                label='Min AGL altitude'
+                label={t('featureAttributesForm.minAGLAlttitude')}
                 disabled={!values.isExclusionZone}
                 InputProps={{
                   endAdornment: (
@@ -78,13 +83,12 @@ const FeatureAttributesForm = ({
                 }}
               />
               <FormHelperText style={{ marginBottom: 8 }}>
-                Distance of the top of the obstacle measured from the ground.
-                UAVs should fly above this altitude limit to avoid collision.
+                {t('featureAttributesForm.minAGLAlttitudeText')}
               </FormHelperText>
 
               <TextField
                 name='maxAltitude'
-                label='Max AGL altitude'
+                label={t('featureAttributesForm.maxAGLAlttitude')}
                 disabled={!values.isExclusionZone}
                 InputProps={{
                   endAdornment: (
@@ -96,8 +100,7 @@ const FeatureAttributesForm = ({
                 }}
               />
               <FormHelperText style={{ marginBottom: 8 }}>
-                Distance of the bottom of the obstacle measured from the ground.
-                UAVs should fly below this altitude limit to avoid collision.
+                {t('featureAttributesForm.maxAGLAlttitudeText')}
               </FormHelperText>
 
               {/* HACK: Forms are not meant to be used like this... */}
@@ -113,7 +116,9 @@ const FeatureAttributesForm = ({
 
     default: {
       return (
-        <BackgroundHint text="This feature type doesn't support attributes." />
+        <BackgroundHint
+          text={t('featureAttributesForm.doesNotSupportAttributes')}
+        />
       );
     }
   }
@@ -124,6 +129,7 @@ FeatureAttributesForm.propTypes = {
   feature: PropTypes.object.isRequired,
   isGeofence: PropTypes.bool,
   onSetFeatureAttributes: PropTypes.func,
+  t: PropTypes.func,
 };
 
 export default connect(
@@ -138,4 +144,4 @@ export default connect(
       dispatch(updateFeatureAttributes({ id: featureId, attributes }));
     },
   })
-)(FeatureAttributesForm);
+)(withTranslation()(FeatureAttributesForm));

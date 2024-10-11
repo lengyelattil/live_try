@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import Box from '@material-ui/core/Box';
@@ -47,6 +48,7 @@ const GeneralPropertiesForm = ({
   shouldFill,
   shouldShowPoints,
   suggestedColor,
+  t,
 }) => (
   <div>
     <Box display='flex' alignItems='center' py='1em'>
@@ -54,7 +56,7 @@ const GeneralPropertiesForm = ({
         <TextField
           fullWidth
           autoFocus={!optimizeUIForTouch}
-          label='Label'
+          label={t('generalPropertiesForm.label')}
           variant='filled'
           value={feature.label || ''}
           onChange={onSetFeatureLabel}
@@ -78,7 +80,7 @@ const GeneralPropertiesForm = ({
       >
         <div>
           <AutoCheckBox fontSize='large' />
-          Automatic color
+          {t('generalPropertiesForm.automaticColor')}
         </div>
       </Button>
     </Box>
@@ -94,7 +96,7 @@ const GeneralPropertiesForm = ({
               onChange={onToggleFeatureFillVisible}
             />
           }
-          label='Fill interior'
+          label={t('generalPropertiesForm.fillInterior')}
         />
       )}
       {featureTypeHasPoints(feature.type) && (
@@ -108,7 +110,7 @@ const GeneralPropertiesForm = ({
               onChange={onToggleFeaturePointsVisible}
             />
           }
-          label='Show individual points'
+          label={t('generalPropertiesForm.showIndividualPoints')}
         />
       )}
       {featureTypeCanBeMeasured(feature.type) && (
@@ -122,7 +124,7 @@ const GeneralPropertiesForm = ({
               onChange={onToggleFeatureMeasurementVisible}
             />
           }
-          label='Show measurements'
+          label={t('generalPropertiesForm.showMeasurements')}
         />
       )}
     </div>
@@ -156,6 +158,7 @@ GeneralPropertiesForm.propTypes = {
   shouldFill: PropTypes.bool,
   shouldShowPoints: PropTypes.bool,
   suggestedColor: PropTypes.string,
+  t: PropTypes.func,
 };
 
 export default connect(
@@ -187,4 +190,4 @@ export default connect(
       dispatch(updateFeatureVisibility({ id: featureId, visible: checked }));
     },
   })
-)(GeneralPropertiesForm);
+)(withTranslation()(GeneralPropertiesForm));
