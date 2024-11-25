@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAsyncRetry } from 'react-use';
 
 import Button from '@material-ui/core/Button';
@@ -29,6 +30,7 @@ const LicenseInfoPanelPresentation = ({
 }) => {
   const featureItems = [];
   const restrictionItems = [];
+  const { t } = useTranslation();
 
   if (Array.isArray(features)) {
     for (const feature of features) {
@@ -72,8 +74,8 @@ const LicenseInfoPanelPresentation = ({
           <VpnKey />
         </ListItemIcon>
         <ListItemText
-          primary='License ID'
-          secondary={id || 'No license activated'}
+          primary={t('licenseInfoPanel.licenseID')}
+          secondary={id || t('licenseInfoPanel.noLicenseActivated')}
         />
       </ListItem>
       {licensee && (
@@ -81,7 +83,10 @@ const LicenseInfoPanelPresentation = ({
           <ListItemIcon>
             <Person />
           </ListItemIcon>
-          <ListItemText primary='Name of license holder' secondary={licensee} />
+          <ListItemText
+            primary={t('licenseInfoPanel.nameOfLicenseHolder')}
+            secondary={licensee}
+          />
         </ListItem>
       )}
       {id && (
@@ -90,8 +95,8 @@ const LicenseInfoPanelPresentation = ({
             <Event />
           </ListItemIcon>
           <ListItemText
-            primary='Expiry date'
-            secondary={expiryDate || 'This license never expires'}
+            primary={t('licenseInfoPanel.expiryDate')}
+            secondary={expiryDate || t('licenseInfoPanel.licenseNeverExpires')}
           />
         </ListItem>
       )}
@@ -128,13 +133,18 @@ const LicenseInfoPanel = () => {
   const state = useAsyncRetry(messageHub.query.getLicenseInformation, [
     messageHub,
   ]);
+  const { t } = useTranslation();
 
   if (state.error && !state.loading) {
     return (
       <BackgroundHint
         icon={<Error />}
-        text='Error while loading license information'
-        button={<Button onClick={state.retry}>Try again</Button>}
+        text={t('licenseInfoPanel.errorWhileLoadingLicenseInformation')}
+        button={
+          <Button onClick={state.retry}>
+            {t('licenseInfoPanel.tryAgain')}
+          </Button>
+        }
       />
     );
   }
@@ -146,7 +156,7 @@ const LicenseInfoPanel = () => {
   return (
     <LargeProgressIndicator
       fullHeight
-      label='Retrieving license information...'
+      label={t('licenseInfoPanel.retrievingLicenseInformation')}
     />
   );
 };

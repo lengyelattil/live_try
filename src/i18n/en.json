@@ -257,6 +257,16 @@
     "shutdown": "Shutdown",
     "shutdownAll": "Shutdown all"
   },
+  "licenseInfoPanel": {
+    "errorWhileLoadingLicenseInformation": "Error while loading license information",
+    "expiryDate": "Expiry date",
+    "licenseID": "License ID",
+    "licenseNeverExpires": "This license never expires",
+    "nameOfLicenseHolder": "Name of license holder",
+    "noLicenseActivated": "No license activated",
+    "retrievingLicenseInformation": "Retrieving license information…",
+    "tryAgain": "Try again"
+  },
   "lightControl": {
     "connectToAServer": "Connect to a server to control lights",
     "fromGCS": "Lights controlled from GCS",

@@ -256,6 +256,16 @@
     "shutdown": "Kikapcsolás",
     "shutdownAll": "Összes kikapcsolása"
   },
+  "licenseInfoPanel": {
+    "errorWhileLoadingLicenseInformation": "Hiba történt a licencadatok betöltésekor",
+    "expiryDate": "Lejárati dátum",
+    "licenseID": "Licencazonosító",
+    "licenseNeverExpires": "Ez a licenc soha nem jár le",
+    "nameOfLicenseHolder": "A licenc birtokosának neve",
+    "noLicenseActivated": "Nincs aktiválva licenc",
+    "retrievingLicenseInformation": "Licencadatok lekérése…",
+    "tryAgain": "Próbálja újra"
+  },
   "lightControl": {
     "connectToAServer": "Csatlakozzon egy szerverhez a fények irányításához",
     "fromGCS": "A fények GCS-sel vezéreltek",
